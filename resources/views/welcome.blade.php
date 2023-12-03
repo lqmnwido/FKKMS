@@ -867,6 +867,7 @@
         </div>
         @endif
 
+        <!-- Main Description -->
 
         <div class="relative isolate px-6 pt-14 lg:px-8">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -876,7 +877,8 @@
                     style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                 </div>
             </div>
-            <img src="/images/logo.png" alt="UMPSA" width="800px" class="mx-auto d-block" style="margin-bottom: -290px; margin-top:-100px; padding-right:325px">
+            <img src="/images/logo.png" alt="UMPSA" width="800px" class="mx-auto d-block"
+                style="margin-bottom: -290px; margin-top:-100px; padding-right:325px">
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                 <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                     <div
@@ -909,7 +911,284 @@
         </div>
     </div>
 
+    <!-- Benefit Description -->
 
+    <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:text-center">
+                <h2 class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need to
+                    deploy your app</p>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Quis tellus eget adipiscing convallis sit sit eget
+                    aliquet quis. Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In mi viverra
+                    elit nunc.</p>
+            </div>
+            <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                    <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 text-gray-900">
+                            <div
+                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                                </svg>
+                            </div>
+                            Push to deploy
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Morbi viverra dui mi arcu sed. Tellus semper
+                            adipiscing suspendisse semper morbi. Odio urna massa nunc massa.</dd>
+                    </div>
+                    <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 text-gray-900">
+                            <div
+                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                </svg>
+                            </div>
+                            SSL certificates
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Sit quis amet rutrum tellus ullamcorper
+                            ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.</dd>
+                    </div>
+                    <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 text-gray-900">
+                            <div
+                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                </svg>
+                            </div>
+                            Simple queues
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Quisque est vel vulputate cursus. Risus proin
+                            diam nunc commodo. Lobortis auctor congue commodo diam neque.</dd>
+                    </div>
+                    <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 text-gray-900">
+                            <div
+                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" />
+                                </svg>
+                            </div>
+                            Advanced security
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Arcu egestas dolor vel iaculis in ipsum
+                            mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <<!-- Page Container -->
+<div class="flex items-center justify-center min-h-screen bg-white py-48">
+    <div class="flex flex-col">
+        <div class="flex flex-col mt-8">
+            <!-- Meet the Team -->
+            <div class="container max-w-7xl px-4">
+                <!-- Section Header -->
+                <div class="flex flex-wrap justify-center text-center mb-24">
+                    <div class="w-full lg:w-6/12 px-4">
+                        <!-- Header -->
+                        <h1 class="text-gray-900 text-4xl font-bold mb-8">
+                            Meet the Team
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="text-gray-700 text-lg font-light">
+                            With over 100 years of combined experience, we've got a well-seasoned team at the helm.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Members -->
+                <div class="flex flex-wrap">
+                    <!-- Member #1 -->
+                    <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
+                        <div class="flex flex-col">
+                            <!-- Avatar -->
+                            <a href="#" class="mx-auto">
+                                <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
+                                    src="https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80">
+                            </a>
+
+                            <!-- Details -->
+                            <div class="text-center mt-6">
+                                <!-- Name -->
+                                <h1 class="text-gray-900 text-xl font-bold mb-1">
+                                    Tranter Jaskulski
+                                </h1>
+
+                                <!-- Title -->
+                                <div class="text-gray-700 font-light mb-2">
+                                    Founder & Specialist
+                                </div>
+
+                                <!-- Social Icons -->
+                                <div class="flex items-center justify-center opacity-50 hover:opacity-100
+                                transition-opacity duration-300">
+                                    <!-- Linkedin -->
+                                    <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                                        <i class="mdi mdi-linkedin text-indigo-500 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Twitter -->
+                                    <a href="#" class="flex rounded-full hover:bg-blue-50 h-10 w-10">
+                                        <i class="mdi mdi-twitter text-blue-300 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Instagram -->
+                                    <a href="#" class="flex rounded-full hover:bg-orange-50 h-10 w-10">
+                                        <i class="mdi mdi-instagram text-orange-400 mx-auto mt-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member #2 -->
+                    <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
+                        <div class="flex flex-col">
+                            <!-- Avatar -->
+                            <a href="#" class="mx-auto">
+                                <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
+                                    src="https://images.unsplash.com/photo-1634896941598-b6b500a502a7?fit=clamp&w=400&h=400&q=80">
+                            </a>
+
+                            <!-- Details -->
+                            <div class="text-center mt-6">
+                                <!-- Name -->
+                                <h1 class="text-gray-900 text-xl font-bold mb-1">
+                                    Denice Jagna
+                                </h1>
+
+                                <!-- Title -->
+                                <div class="text-gray-700 font-light mb-2">
+                                    Tired & M. Specialist
+                                </div>
+
+                                <!-- Social Icons -->
+                                <div class="flex items-center justify-center opacity-50 hover:opacity-100
+                                transition-opacity duration-300">
+                                    <!-- Linkedin -->
+                                    <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                                        <i class="mdi mdi-linkedin text-indigo-700 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Twitter -->
+                                    <a href="#" class="flex rounded-full hover:bg-blue-50 h-10 w-10">
+                                        <i class="mdi mdi-twitter text-blue-400 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Instagram -->
+                                    <a href="#" class="flex rounded-full hover:bg-orange-50 h-10 w-10">
+                                        <i class="mdi mdi-instagram text-orange-400 mx-auto mt-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member #3 -->
+                    <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
+                        <div class="flex flex-col">
+                            <!-- Avatar -->
+                            <a href="#" class="mx-auto">
+                                <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
+                                    src="https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?fit=clamp&w=400&h=400&q=80">
+                            </a>
+
+                            <!-- Details -->
+                            <div class="text-center mt-6">
+                                <!-- Name -->
+                                <h1 class="text-gray-900 text-xl font-bold mb-1">
+                                    Kenji Milton
+                                </h1>
+
+                                <!-- Title -->
+                                <div class="text-gray-700 font-light mb-2">
+                                    Team Memeber
+                                </div>
+
+                                <!-- Social Icons -->
+                                <div class="flex items-center justify-center opacity-50 hover:opacity-100
+                                transition-opacity duration-300">
+                                    <!-- Linkedin -->
+                                    <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                                        <i class="mdi mdi-linkedin text-indigo-700 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Twitter -->
+                                    <a href="#" class="flex rounded-full hover:bg-blue-50 h-10 w-10">
+                                        <i class="mdi mdi-twitter text-blue-400 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Instagram -->
+                                    <a href="#" class="flex rounded-full hover:bg-orange-50 h-10 w-10">
+                                        <i class="mdi mdi-instagram text-orange-400 mx-auto mt-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member #4 -->
+                    <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
+                        <div class="flex flex-col">
+                            <!-- Avatar -->
+                            <a href="#" class="mx-auto">
+                                <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
+                                    src="https://images.unsplash.com/photo-1635003913011-95971abba560?fit=clamp&w=400&h=400&q=80">
+                            </a>
+
+                            <!-- Details -->
+                            <div class="text-center mt-6">
+                                <!-- Name -->
+                                <h1 class="text-gray-900 text-xl font-bold mb-1">
+                                    Doesn't matter
+                                </h1>
+
+                                <!-- Title -->
+                                <div class="text-gray-700 font-light mb-2">
+                                    Will be fired
+                                </div>
+
+                                <!-- Social Icons -->
+                                <div class="flex items-center justify-center opacity-50 hover:opacity-100
+                                transition-opacity duration-300">
+                                    <!-- Linkedin -->
+                                    <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                                        <i class="mdi mdi-linkedin text-indigo-700 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Twitter -->
+                                    <a href="#" class="flex rounded-full hover:bg-blue-50 h-10 w-10">
+                                        <i class="mdi mdi-twitter text-blue-400 mx-auto mt-2"></i>
+                                    </a>
+
+                                    <!-- Instagram -->
+                                    <a href="#" class="flex rounded-full hover:bg-orange-50 h-10 w-10">
+                                        <i class="mdi mdi-instagram text-orange-400 mx-auto mt-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
