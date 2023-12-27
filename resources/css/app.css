@@ -5,3 +5,13 @@
 [x-cloak] {
     display: none;
 }
+
+.disabled-link {
+    pointer-events: none;
+    /* Disable click events */
+    opacity: 0.5;
+    /* Adjust opacity for a visual indication */
+    cursor: not-allowed;
+    /* Show not-allowed cursor */
+    /* Add any additional styling for disabled links */
+}

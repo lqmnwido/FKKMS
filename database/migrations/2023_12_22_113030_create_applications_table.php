@@ -11,28 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->string('application_ID')->unique();
             $table->string('User_ID')->unique();
-            $table->string('name');
             $table->string('MatricID')->nullable();
-            $table->string('email')->unique();
-            $table->string('User_type')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('name');
+            $table->string('User_type');
+            $table->string('Product_name');
+            $table->double('Price');
             $table->timestamps();
         });
     }
 
     /**
-     * 
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('application');
     }
 };

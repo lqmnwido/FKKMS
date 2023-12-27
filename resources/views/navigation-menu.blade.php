@@ -12,21 +12,41 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if ((Auth::user()->User_type) == 'Admin' || (Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Home') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('application') }}" :active="request()->routeIs('application')">
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('applications.index')">
                         {{ __('Management Application') }}
                     </x-nav-link>
                 </div>
+                @endif
+                @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('application') }}" :active="request()->routeIs('application')">
+                    <x-nav-link href="{{ route('applications.index') }}" >
+                        {{ __('Management Payment') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('applications.index') }}" >
                         {{ __('Management Complaint') }}
                     </x-nav-link>
                 </div>
+                @endif
+                @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('applications.index') }}">
+                        {{ __('Management Report') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                @if ((Auth::user()->User_type) == 'Admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                        {{ __('Management User') }}
+                    </x-nav-link>
+                </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -95,6 +115,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">

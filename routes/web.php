@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Console\Application;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,16 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
     Route::get('/application', function () {
-        return view('manage_complaint/applicationList');
+        return view('manage_application.applicationList');
     })->name('application');
 });
+
+Route::get('/dashboard', 'App\Http\Controllers\HomeController@index') -> name('dashboard');
+
+Route::resource('users',App\Http\Controllers\UserController::class);
+
+Route::resource('applications',App\Http\Controllers\ApplicationController::class);
