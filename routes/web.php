@@ -36,3 +36,11 @@ Route::get('/dashboard', 'App\Http\Controllers\HomeController@index') -> name('d
 Route::resource('users',App\Http\Controllers\UserController::class);
 
 Route::resource('applications',App\Http\Controllers\ApplicationController::class);
+
+Route::post('/applications/approve','App\Http\Controllers\ApplicationController@approve') -> name('approve_application');
+
+Route::post('/applications/reject','App\Http\Controllers\ApplicationController@reject') -> name('reject_application');
+
+Route::post('/applications/update','App\Http\Controllers\ApplicationController@update') -> name('update_application');
+
+Route::get('/applications/view/id={id}','App\Http\Controllers\ApplicationController@show') -> name('view_application');

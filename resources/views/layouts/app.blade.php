@@ -52,6 +52,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+
+        <script>
+            $(document).on('click', '.reject_tutor', function(){
+
+                var application_id = $(this).attr('id');
+            
+                console.log('Application ID = '+application_id);
+            
+                $('.reject_app_id').val(application_id);
+                $('.rej_app_id').empty();
+                $('.rej_app_id').append(application_id);
+            
+            });
+        </script>
     </body>
 
 </html>

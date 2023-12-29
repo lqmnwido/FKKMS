@@ -13,7 +13,7 @@
                 {{Session::get('success')}}
             </div>
             @endif
-            <form method="POST" action="{{route('applications.store')}}">
+            <form method="POST" action="{{route('applications.store', ['roles' => $uRole])}}">
                 @csrf
                 @if ($uRole == 'students')
                     <div>
@@ -36,8 +36,8 @@
                     </br>
                     <div>
                         <x-label for="price" value="{{ __('Price') }}" />
-                        <x-input id="price" class="block mt-1 w-full" type="text" name="price"
-                            :value="old('Price')" required autofocus autocomplete="product" />
+                        <x-input id="price" class="block mt-1 w-full" type="number" name="price"
+                            :value="old('Price')" required step=".01"  min="1" value="0"  autofocus autocomplete="product" />
                     </div>
                     <div>
                         <x-input id="role" class="block mt-1 w-full" type="hidden" name="role" value="FK Student" hidden/>
@@ -77,12 +77,12 @@
                     </div>
                     </br>
                     <div>
-                        <x-label for="Price" value="{{ __('Price') }}" />
-                        <x-input id="Price" class="block mt-1 w-full" type="text" name="Price"
+                        <x-label for="price" value="{{ __('Price') }}" />
+                        <x-input id="price" class="block mt-1 w-full" type="text" name="price"
                             :value="old('Price')" required autofocus autocomplete="product" />
                     </div>
                     <div>
-                        <x-input id="role" class="block mt-1 w-full" type="hidden" name="role" value="FK Student" hidden/>
+                        <x-input id="role" class="block mt-1 w-full" type="hidden" name="role" value="Vendor" hidden/>
                         <x-input id="uid" class="block mt-1 w-full" type="hidden" name="uid" value="{{ Auth::user()->User_ID }}" hidden/>
                     </div>
                     </br>
@@ -107,17 +107,12 @@
 
                     <a href="{{route('dashboard')}}"
                         class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-                        {{ _('CANCEL') }}</a>
+                        {{ __('CANCEL') }}</a>
 
                     <x-button
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm h-10 px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                         {{ __('APPLY') }}
                     </x-button>
-
-                </div>
-
-                <div class="flex items-center justify-center mt-4">
-
 
                 </div>
             </form>

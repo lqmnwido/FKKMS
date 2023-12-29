@@ -15,35 +15,35 @@
                 @if ((Auth::user()->User_type) == 'Admin' || (Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('applications.index')">
-                        {{ __('Management Application') }}
+                        {{ __('Manage Application') }}
                     </x-nav-link>
                 </div>
                 @endif
                 @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('applications.index') }}" >
-                        {{ __('Management Payment') }}
+                        {{ __('Manage Payment') }}
                     </x-nav-link>
                 </div>
                 @endif
                 @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('applications.index') }}" >
-                        {{ __('Management Complaint') }}
+                        {{ __('Manage Complaint') }}
                     </x-nav-link>
                 </div>
                 @endif
                 @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('applications.index') }}">
-                        {{ __('Management Report') }}
+                        {{ __('Manage Report') }}
                     </x-nav-link>
                 </div>
                 @endif
                 @if ((Auth::user()->User_type) == 'Admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Management User') }}
+                        {{ __('Manage User') }}
                     </x-nav-link>
                 </div>
                 @endif

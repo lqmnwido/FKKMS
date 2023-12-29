@@ -20,6 +20,8 @@
             <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                 <thead class="bg-gray-50">
                     <tr>
+                        <th class="px-6 py-4 font-medium text-gray-900">No.</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">User ID</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">User</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Role</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Student ID</th>
@@ -27,8 +29,13 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+                    @php
+                        $no = 1;
+                    @endphp
                     @foreach ($users as $user)
                     <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">{{ $no++ }}</td>
+                        <td class="px-6 py-4">{{ $user->User_ID }}</td>
                         <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                             <div class="text-sm">
                                 <div class="font-medium text-gray-700">{{$user->name}}</div>
