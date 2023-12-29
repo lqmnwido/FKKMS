@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class ApplicationController extends Controller
 {
@@ -12,15 +13,24 @@ class ApplicationController extends Controller
      */
     public function index(Request $request)
     {
-        $applications = Application::all();
+        $uRole=$request->role;
+
+        $applications = Application::where('User_type', $uRole)->get();
 
         $role=Auth::user()->User_type;
         
-        $uRole=$request->role;
+
+        if($uRole== "Vendor" || $uRole== "FK Student"){
+            $users = User::where('User_type', auth()->user()->$uRole)->get();
+        }else{
+            $users = User::all();
+        }
+        
 
         if($role=='Admin')
         {
-            return view('manage_application.applicationList', compact('applications'));   
+            
+            return view('manage_application.applicationList', compact('applications','uRole', 'users'));   
         }else{
             return view('manage_application.addDetails', compact('applications','uRole'));
         }
@@ -72,6 +82,11 @@ class ApplicationController extends Controller
             ]);
         }
 
+        User::where('User_ID', $request['uid'])->update([
+            'phone' => $request['phone'],
+        ]);
+
+
         return redirect()->route('dashboard')->with('success', 'Application sent!');
     }
 
@@ -80,7 +95,14 @@ class ApplicationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $users = Application::where('User_ID', $id)->first();
+
+        if ($users) {
+            $role = $users->User_type; 
+        }else{
+            $role = null;
+        }
+        return view('manage_application.viewApplication', ['user' => $users], compact('users', 'role'));
     }
 
     /**
@@ -102,8 +124,36 @@ class ApplicationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $users)
     {
-        //
+        $users = Application::findOrFail($users);
+        $users->delete();
+        return redirect()->route('dashboard')->with('Alert', 'Application Deleted!');
     }
+
+    public function approve(Request $request)
+    {
+        $application_ID = $request['id'];
+        $status = 'Approved';
+        $role = $request['userType'];
+        Application::where('application_ID', $application_ID)->update([
+            'status' => $status,
+        ]);
+
+        return redirect()->route('applications.index', ['role' => $role])->with('Approve', $application_ID.' Has Been Approved');
+    }
+
+    public function reject(Request $request)
+    {
+        $application_ID = $request['id'];
+        $status = 'Rejected';
+        $role = $request['userType'];
+        Application::where('application_ID', $application_ID)->update([
+            'status' => $status,
+            'reason'=> $request['reason'],
+        ]);
+
+        return redirect()->route('applications.index', ['role' => $role])->with('Reject', $application_ID.' Has Been Rejected');
+    }
+
 }

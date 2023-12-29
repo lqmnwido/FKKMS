@@ -1117,7 +1117,7 @@
 
                                 <!-- Title -->
                                 <div class="text-gray-700 font-light mb-2">
-                                    Manage Complaint
+                                    Manage Complaint Module
                                 </div>
 
                                 <!-- Social Icons -->

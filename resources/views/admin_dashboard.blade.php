@@ -18,7 +18,7 @@
                     <span class="text-sm text-gray-500 dark:text-gray-400">List of application by FK Students in
                         UMPSA</span>
                     <div class="flex mt-4 md:mt-6">
-                        <a href="{{ route('applications.index', 'students') }}"
+                        <a href="{{ route('applications.index', ['role' => 'FK Student']) }}"
                             class="inline-flex items-center px-4 py-2 text-md font-large text-center text-red-600">See List</a>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <span class="text-sm text-gray-500 dark:text-gray-400">List of application by Vendors outside of
                         UMPSA</span>
                         <div class="flex mt-4 md:mt-6">
-                        <a href="{{ route('applications.index', 'vendors') }}"
+                        <a href="{{ route('applications.index', ['role' => 'Vendor']) }}"
                             class="inline-flex items-center px-4 py-2 text-md font-large text-center text-red-600">See List</a>
                     </div>
                 </div>

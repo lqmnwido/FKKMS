@@ -5,17 +5,25 @@
         <h1 class="text-4xl">KIOSK APPLICATION</h1>
         <h4 class="text-2xl">Apply Now</h4>
         <br />
+
+        @if(Session::has('alert'))
+        <div class="alert alert-danger" role="alert">
+            {{Session::get('alert')}}
+        </div>
+        @endif
+
         @if(Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{Session::get('success')}}
         </div>
         @endif
+
         @if ($userID == $uid)
             <div class="container-fluid d-flex justify-content-evenly" style="padding-top:10%;">
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
-                    <button
+                    <a href="{{ route('view_application', ['id' => $uid]) }}"
                         class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">VIEW
-                        APPLICATION</button>
+                        APPLICATION</a>
                 </div>
             </div>
         @elseif($userID != $uid)

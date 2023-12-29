@@ -17,5 +17,7 @@ class Application extends Model
         'User_type',
         'Product_name',
         'Price',
+        'status',
+        'reason',
     ];
 }
