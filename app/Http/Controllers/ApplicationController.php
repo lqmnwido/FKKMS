@@ -108,9 +108,16 @@ class ApplicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $users)
     {
-        //
+        $application = Application::where('User_ID', $users)->first();
+        $user = User::where('User_ID', $users)->first();
+        if ($application) {
+            $role = $application->User_type; 
+        }else{
+            $role = null;
+        }
+        return view('manage_application.updateDetails', ['id' => $users], compact('user', 'application','role'));
     }
 
     /**
@@ -118,7 +125,37 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        if ($request['role'] != 'FK Student') {
+            $matricID = null;
+        } else {
+            $matricID = $request['stdID'];
+        }
+
+        if ($request['role'] != 'Vendor') {
+            $company = null;
+        } else {
+            $company = $request['company'];
+        }
+
+
+        User::where('User_ID', $id)->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'MatricID' => $matricID,
+            'company' => $company,
+            'phone' => $request['phone'],
+        ]);
+
+        Application::where('User_ID', $id)->update([
+            'name' => $request['name'],
+            'Product_name' => $request['product'],
+            'MatricID' => $matricID,
+            'Price' => $request['price'],
+        ]);
+
+        
+        return redirect()->route('view_application', ['id' => $id])->with('success', 'Application Updated!');
     }
 
     /**

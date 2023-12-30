@@ -41,6 +41,6 @@ Route::post('/applications/approve','App\Http\Controllers\ApplicationController@
 
 Route::post('/applications/reject','App\Http\Controllers\ApplicationController@reject') -> name('reject_application');
 
-Route::post('/applications/update','App\Http\Controllers\ApplicationController@update') -> name('update_application');
+Route::patch('/applications/update/{id}','App\Http\Controllers\ApplicationController@update') -> name('update_application');
 
 Route::get('/applications/view/id={id}','App\Http\Controllers\ApplicationController@show') -> name('view_application');
