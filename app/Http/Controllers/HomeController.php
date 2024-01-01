@@ -25,6 +25,8 @@ class HomeController extends Controller
         {
             return view('admin_dashboard');
             
+        }elseif($role== 'FK Bursary'){
+            return view('manage_payment.mainPayment', compact('role'));
         }
         else
         {

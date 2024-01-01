@@ -170,11 +170,15 @@ class ApplicationController extends Controller
 
     public function approve(Request $request)
     {
+        $ranID = rand(10000, 99999);
+        $kioskID =  'KIOSK'.$ranID;
+
         $application_ID = $request['id'];
         $status = 'Approved';
         $role = $request['userType'];
         Application::where('application_ID', $application_ID)->update([
             'status' => $status,
+            'Kiosk_ID' => $kioskID,
         ]);
 
         return redirect()->route('applications.index', ['role' => $role])->with('Approve', $application_ID.' Has Been Approved');

@@ -79,7 +79,7 @@
                     <div>
                         <x-label for="price" value="{{ __('Price') }}" />
                         <x-input id="price" class="block mt-1 w-full" type="text" name="price"
-                            :value="old('Price')" required autofocus autocomplete="product" />
+                            :value="old('Price')" required step=".01"  min="1" value="0" autofocus autocomplete="product" />
                     </div>
                     <div>
                         <x-input id="role" class="block mt-1 w-full" type="hidden" name="role" value="Vendor" hidden/>

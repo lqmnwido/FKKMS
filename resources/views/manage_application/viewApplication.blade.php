@@ -34,6 +34,11 @@
                     <div id="reason" class="px-6 py-4 text-red-600 font-bold">{{ $users->reason }}
                     </div>
                 @endif
+                @if ($users->Kiosk_ID != null)
+                    <x-label for="reason" value="{{ __('KIOSK ID : ') }}" />
+                    <div id="reason" class="px-6 py-4 text-green-600 font-bold">{{ $users->Kiosk_ID }}
+                    </div>
+                @endif
             </div>
 
 

@@ -22,6 +22,7 @@ class UserController extends Controller
             return view('manage_user.userList', compact('users'));
 
         }
+
     }
 
     /**

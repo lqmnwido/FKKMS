@@ -37,6 +37,8 @@ Route::resource('users',App\Http\Controllers\UserController::class);
 
 Route::resource('applications',App\Http\Controllers\ApplicationController::class);
 
+Route::resource('payments',App\Http\Controllers\PaymentController::class);
+
 Route::post('/applications/approve','App\Http\Controllers\ApplicationController@approve') -> name('approve_application');
 
 Route::post('/applications/reject','App\Http\Controllers\ApplicationController@reject') -> name('reject_application');
@@ -44,3 +46,11 @@ Route::post('/applications/reject','App\Http\Controllers\ApplicationController@r
 Route::patch('/applications/update/{id}','App\Http\Controllers\ApplicationController@update') -> name('update_application');
 
 Route::get('/applications/view/id={id}','App\Http\Controllers\ApplicationController@show') -> name('view_application');
+
+Route::get('/payments/create/type={type}/{id}', 'App\Http\Controllers\PaymentController@create') -> name('add_payment');
+
+Route::post('/payments/store', 'App\Http\Controllers\PaymentController@store') -> name('store_payment');
+
+Route::get('toyyibpay/{billName}/{description}/{amount}/{refNo}/{name}/{email}/{phone}/{expires}','App\Http\Controllers\PaymentController@createBill') -> name('toyyibpay-create');
+Route::get('toyyibpay-status','App\Http\Controllers\PaymentController@paymentStatus') -> name('toyyibpay-status');
+Route::post('toyyibpay-callback','App\Http\Controllers\PaymentController@callBack') -> name('toyyibpay-callback');
