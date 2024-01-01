@@ -19,9 +19,16 @@
                     </x-nav-link>
                 </div>
                 @endif
+                @if ((Auth::user()->User_type) == 'FK Bursary')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('dashboard')}}" :active="request()->routeIs('payments.index')" >
+                        {{ __('Manage Payment') }}
+                    </x-nav-link>
+                </div>
+                @endif
                 @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('applications.index') }}" >
+                    <x-nav-link href="{{ route('payments.index')}}" :active="request()->routeIs('payments.index')" >
                         {{ __('Manage Payment') }}
                     </x-nav-link>
                 </div>

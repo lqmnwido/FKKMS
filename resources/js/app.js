@@ -5,6 +5,10 @@ $('input[name="options"]').on('change', function () {
     showHideTextInput();
 });
 
+$('input[name="paymentOpt"]').on('change', function () {
+    showHidePayment();
+});
+
 $('#role').on('change', function () {
     showHide();
 });
@@ -44,6 +48,18 @@ function showHide() {
     }
 }
 
+function showHidePayment() {
+    var FPX = $('#FPX');
+    var CDM = $('#CDM');
+    var upload = $('#upload');
 
+    if (FPX.is(':checked')) {
+        upload.hide();
+    } else if (CDM.is(':checked')) {
+        upload.show();
+    } else {
+        upload.hide();
+    }
+}
 
 

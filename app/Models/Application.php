@@ -19,5 +19,6 @@ class Application extends Model
         'Price',
         'status',
         'reason',
+        'Kiosk_ID',
     ];
 }
