@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Application;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -27,6 +25,8 @@ class HomeController extends Controller
             
         }elseif($role== 'FK Bursary'){
             return view('manage_payment.mainPayment', compact('role'));
+        }elseif($role== 'Pupuk Admin'){
+            return view('manage_complaint.ViewComplaintList', compact('role'));
         }
         else
         {

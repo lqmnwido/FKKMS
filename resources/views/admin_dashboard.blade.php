@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <br />
     <div class="container text-center">
     <h1 class="text-4xl">MANAGE APPLICATION</h1>
@@ -42,10 +41,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 </x-app-layout>

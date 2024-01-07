@@ -1146,21 +1146,21 @@
                     <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
                         <div class="flex flex-col">
                             <!-- Avatar -->
-                            <a href="#" class="mx-auto">
+                            <a href="#" class="mx-auto" style="width:200px;">
                                 <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
-                                    src="https://images.unsplash.com/photo-1635003913011-95971abba560?fit=clamp&w=400&h=400&q=80">
+                                    src="/images/luqman.jpeg">
                             </a>
 
                             <!-- Details -->
                             <div class="text-center mt-6">
                                 <!-- Name -->
                                 <h1 class="text-gray-900 text-xl font-bold mb-1">
-                                    Doesn't matter
+                                    MUHAMMAD LUQMAN NUL HAFIZ BIN ABDUL HADI
                                 </h1>
 
                                 <!-- Title -->
                                 <div class="text-gray-700 font-light mb-2">
-                                    Will be fired
+                                    Manage Payment Module
                                 </div>
 
                                 <!-- Social Icons -->
