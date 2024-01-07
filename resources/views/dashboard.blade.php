@@ -1,6 +1,7 @@
 <x-app-layout>
 
     <br />
+    @if ($role == 'FK Student' || $role == 'Vendor')
     <div class="container text-center">
         <h1 class="text-4xl">KIOSK APPLICATION</h1>
         <h4 class="text-2xl">Apply Now</h4>
@@ -57,5 +58,6 @@
             </div>
         @endif
     </div>
+    @endif
 
 </x-app-layout>

@@ -35,15 +35,29 @@
                 @endif
                 @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('applications.index') }}" >
+                    <x-nav-link href="{{ route('complaints.index') }}" :active="request()->routeIs('complaints.index')">
+                        {{ __('Manage Complaint') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                @if ((Auth::user()->User_type) == 'Pupuk Admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Manage Complaint') }}
                     </x-nav-link>
                 </div>
                 @endif
                 @if ((Auth::user()->User_type) == 'FK Student' || (Auth::user()->User_type) == 'Vendor')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('applications.index') }}">
-                        {{ __('Manage Report') }}
+                    <x-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('reports.index')">
+                        {{ __('Manage Sales Report') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                @if ((Auth::user()->User_type) == 'Pupuk Admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Manage Complaint') }}
                     </x-nav-link>
                 </div>
                 @endif

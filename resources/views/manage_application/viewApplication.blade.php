@@ -93,7 +93,7 @@
                     <div>
                         <x-label for="name" value="{{ __('Name') }}" />
                         <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                            value="{{ $users->name }}" required autofocus autocomplete="name"disabled />
+                            value="{{ Auth::user()->name }}" required autofocus autocomplete="name" disabled />
                     </div>
                     </br>
                     <div>

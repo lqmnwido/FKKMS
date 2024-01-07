@@ -33,12 +33,22 @@ Route::middleware([
 
 Route::get('/dashboard', 'App\Http\Controllers\HomeController@index') -> name('dashboard');
 
+//User resource
 Route::resource('users',App\Http\Controllers\UserController::class);
 
+//Application resource
 Route::resource('applications',App\Http\Controllers\ApplicationController::class);
 
+//Payment resource
 Route::resource('payments',App\Http\Controllers\PaymentController::class);
 
+//Complaint resource
+Route::resource('complaints',App\Http\Controllers\ComplaintController::class);
+
+//Report resource
+Route::resource('reports',App\Http\Controllers\ReportController::class);
+
+//Application Route
 Route::post('/applications/approve','App\Http\Controllers\ApplicationController@approve') -> name('approve_application');
 
 Route::post('/applications/reject','App\Http\Controllers\ApplicationController@reject') -> name('reject_application');
@@ -47,10 +57,18 @@ Route::patch('/applications/update/{id}','App\Http\Controllers\ApplicationContro
 
 Route::get('/applications/view/id={id}','App\Http\Controllers\ApplicationController@show') -> name('view_application');
 
+//Payment Route
 Route::get('/payments/create/type={type}/{id}', 'App\Http\Controllers\PaymentController@create') -> name('add_payment');
 
 Route::post('/payments/store', 'App\Http\Controllers\PaymentController@store') -> name('store_payment');
 
+Route::post('/payments/approve','App\Http\Controllers\PaymentController@approve') -> name('approve_payment');
+
+Route::post('/payments/reject','App\Http\Controllers\PaymentController@reject') -> name('reject_payment');
+
+//Payment Gateway
 Route::get('toyyibpay/{billName}/{description}/{amount}/{refNo}/{name}/{email}/{phone}/{expires}','App\Http\Controllers\PaymentController@createBill') -> name('toyyibpay-create');
 Route::get('toyyibpay-status','App\Http\Controllers\PaymentController@paymentStatus') -> name('toyyibpay-status');
 Route::post('toyyibpay-callback','App\Http\Controllers\PaymentController@callBack') -> name('toyyibpay-callback');
+
+

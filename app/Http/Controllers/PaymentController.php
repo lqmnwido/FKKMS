@@ -7,6 +7,7 @@ use App\Models\Application;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
@@ -16,6 +17,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        $type = request('type');
+
         $applications = Application::all();
         $users = User::all();
         $payments = Payment::all();
@@ -29,7 +32,7 @@ class PaymentController extends Controller
             return view('manage_payment.mainPayment', compact('users', 'application', 'payment', 'role'));
 
         }elseif ($role == 'FK Bursary') {
-            return view('manage_payment.mainPayment', compact('role'));
+            return view('manage_payment.paymentList', compact('users', 'applications', 'payments', 'type'));
         }
     }
 
@@ -72,7 +75,9 @@ class PaymentController extends Controller
             $receiptName = $receipt->extension();
             $receipts = $receiptID . '.' . $receiptName;
 
-            $receipt->storeAs('uploads', $receiptID . '.' . $receiptName);
+            $path = 'uploads/'. $receiptID . '.' . $receiptName;
+            
+            Storage::disk('public')->put($path,file_get_contents($receipt));
         } else {
 
             $billName = $request['feeType'];
@@ -108,7 +113,7 @@ class PaymentController extends Controller
             'PaymentMonth' => $month,
             'PaymentDate' => $date,
             'Total_Price' => $request['total'],
-            'remark' => $request['remark'],
+            'remark' => 'Pending',
             'paymentOpt' => $request['paymentOpt'],
             'receipt' => $receipts,
         ]);
@@ -157,8 +162,8 @@ class PaymentController extends Controller
         $expire = date("Y-m-d", $expires);
 
         $receipts = array(
-            'userSecretKey' => 'rk8dxkgp-zrzz-pnfo-41jt-kqy4474avfa9',
-            'categoryCode' => '4qhkj3dh',
+            'userSecretKey' => 'hu7sij8w-6y30-ymrs-chmw-eakjreybb8q4',
+            'categoryCode' => 'qijythvv',
             'billName' => $billName,
             'billDescription' => $description,
             'billPriceSetting' => 1,
@@ -235,5 +240,29 @@ class PaymentController extends Controller
     {
         $response = request()->all(['refno', 'status','reason','billcode', 'order_id', 'amount']);
         Log::info($response);
+    }
+
+    public function approve(Request $request)
+    {
+        $Payment_ID = $request['id'];
+        $status = 'Approved';
+        $type = $request['type'];
+        Payment::where('Payment_ID', $Payment_ID )->update([
+            'remark' => $status,
+        ]);
+
+        return redirect()->route('payments.index', ['type' => $type])->with('Approve', $Payment_ID.' Has Been Approved');
+    }
+
+    public function reject(Request $request)
+    {
+        $Payment_ID = $request['id'];
+        $status = 'Rejected';
+        $type = $request['type'];
+        Payment::where('Payment_ID', $Payment_ID )->update([
+            'remark' => $status,
+        ]);
+
+        return redirect()->route('payments.index', ['type' => $type])->with('Reject', $Payment_ID.' Has Been Rejected');
     }
 }
