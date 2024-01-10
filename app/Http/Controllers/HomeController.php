@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Application;
+use App\Models\Complaint;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -11,6 +13,8 @@ class HomeController extends Controller
         $uid=Auth::user()->User_ID;
         $role=Auth::user()->User_type;
 
+        $users = User::all();
+        $complaints = Complaint::all();
         $applications = Application::where('User_ID', $uid)->first();
 
         if ($applications) {
@@ -25,8 +29,8 @@ class HomeController extends Controller
             
         }elseif($role== 'FK Bursary'){
             return view('manage_payment.mainPayment', compact('role'));
-        }elseif($role== 'Pupuk Admin'){
-            return view('manage_complaint.ViewComplaintList', compact('role'));
+        }elseif($role== 'Pupuk Admin' || $role == 'FK Technical'){
+            return view('manage_complaint.ViewComplaintList', compact('role', 'complaints', 'users'));
         }
         else
         {

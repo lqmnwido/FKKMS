@@ -12,7 +12,7 @@ class Report extends Model
     protected $fillable = [
         'Sales_ID',
         'User_ID',
-        'Payment_ID',
+        'qty',
         'Tax_Rate',
         'Tax',
         'Date',

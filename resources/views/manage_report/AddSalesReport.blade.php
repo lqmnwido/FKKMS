@@ -5,21 +5,20 @@
         <h4 class="text-2xl">FK Participant Page</h4>
         <br />
 
-        @if (Session::has('alert'))
-            <div class="alert alert-danger" role="alert">
-                {{ Session::get('alert') }}
-            </div>
-        @endif
-
-        @if (Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
-        @endif
-
         <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+            @if (Session::has('alert'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('alert') }}
+                </div>
+            @endif
 
-            <form method="POST" action="{{ route('store_payment') }}" enctype="multipart/form-data">
+            @if (Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('reports.store') }}">
                 @csrf
                 <div class="md:flex mb-6">
                     <div class="md:w-1/3">
@@ -49,7 +48,7 @@
                         <input
                             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                             id="kioskID" type="text" value="{{ $application->Kiosk_ID }}" disabled>
-                        <input type="hidden" value="{{ $application->Kiosk_ID }}" name="kioskID">
+                        <input type="hidden" value="{{ $application->User_ID }}" name="User_ID">
                     </div>
                 </div>
 
@@ -103,7 +102,7 @@
                     @php
                         $taxRate = 6 / 100;
 
-                        $total = ($application->Price * 6) / 100;
+                        $total = $application->Price * $taxRate;
                     @endphp
                     <div class="md:w-2/3">
                         <input
@@ -111,7 +110,7 @@
                             id="tRate" type="number" step=".01" min="1" name="tRate"
                             value="{{ $taxRate }}" disabled>
 
-                            <input type="hidden" value="{{ $taxRate }}" name="tRate" id="tRate">
+                        <input type="hidden" value="{{ $taxRate }}" name="tRate" id="tRate">
                     </div>
                 </div>
 
@@ -126,7 +125,8 @@
                             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                             id="total" type="number" value="{{ number_format((float) $total, 2) }}" step=".01"
                             min="1" disabled>
-                        <input type="hidden" value="{{ $total }}" name="total" id="total">
+                        <input type="hidden" value="{{ number_format((float) $total, 2) }}"
+                            id="totalHidden" name="tax">
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                     <div class="md:w-1/3">
                     </div>
                     <div class="md:w-2/3">
-                        <a href="{{route('reports.index')}}" style="margin-right: 20px"
+                        <a href="{{ route('reports.index') }}" style="margin-right: 20px"
                             class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm h-10 px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
                             {{ __('CANCEL') }}
                         </a>

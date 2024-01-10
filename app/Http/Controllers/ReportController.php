@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use App\Models\Application;
+use App\Models\Report;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -13,9 +16,39 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $role=Auth::user()->User_type;
-        $type=request('type');
-        return view('manage_report.reportList', compact('role', 'type'));
+        $type = request('type');
+
+        $role = Auth::user()->User_type;
+
+        $listRole = request('role');
+
+        if ($role == 'FK Student') {
+            if ($type == 'List') {
+                $uid = Auth::user()->User_ID;
+                $reports = Report::where('User_ID', $uid)->get();
+                return view('manage_report.reportList', compact('role', 'type', 'reports'));
+            } else {
+                return view('manage_report.reportList', compact('role', 'type'));
+            }
+        } else {
+            if ($type == 'List') {
+                $reports = Report::all();
+                if($listRole == 'VEN'){
+                    $repo = $reports->filter(function ($report) {
+                        return str_contains($report->User_ID, 'VEN');
+                    });
+                }else{
+                    $repo = $reports->filter(function ($report) {
+                        return str_contains($report->User_ID, 'STD');
+                    });
+                }
+                
+                return view('manage_report.reportList', compact('role', 'type', 'repo', 'listRole'));
+            } else {
+                return view('manage_report.reportList', compact('role', 'type'));
+            }
+        }
+
     }
 
     /**
@@ -41,7 +74,17 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $currentDate = date('Y-m-d');
+        Report::create([
+            'Sales_ID' => $request['salesID'],
+            'User_ID' => $request['User_ID'],
+            'qty' => $request['qty'],
+            'Tax_Rate' => $request['tRate'],
+            'Tax' => $request['tax'],
+            'Date' => $currentDate,
+        ]);
+
+        return redirect()->route('reports.index')->with('success', 'Report Added!');
     }
 
     /**
@@ -49,7 +92,14 @@ class ReportController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $report = Report::where('id', $id)->first();
+
+        $uid = $report->User_ID;
+
+        $application = Application::where('User_ID', $uid)->first();
+
+
+        return view('manage_report.ViewSalesReport', compact('id', 'report', 'application'));
     }
 
     /**
@@ -57,7 +107,14 @@ class ReportController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $report = Report::where('id', $id)->first();
+
+        $uid = $report->User_ID;
+
+        $application = Application::where('User_ID', $uid)->first();
+
+
+        return view('manage_report.EditSalesReport', compact('id', 'report', 'application'));
     }
 
     /**
@@ -65,7 +122,15 @@ class ReportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $report = Report::where('Sales_ID', $id)->first();
+
+        $reportID = $report->id;
+
+        Report::where('Sales_ID', $id)->update([
+            'qty' => $request['qty'],
+        ]);
+
+        return redirect()->route('reports.edit', ['report' => $reportID])->with('success', 'Sales Updated!');
     }
 
     /**
@@ -73,6 +138,9 @@ class ReportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $type = 'List';
+        $report = Report::findOrFail($id);
+        $report->delete();
+        return redirect()->route('reports.index', ['type' => 'List'])->with('Alert', 'Sales Deleted!');
     }
 }

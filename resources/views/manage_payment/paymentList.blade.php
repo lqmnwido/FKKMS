@@ -66,55 +66,8 @@
                                 </td>
                                 <td class="px-6 py-4">{{ $payment->paymentOpt }}</td>
                                 <td class="px-6 py-4">
-                                    <div class="flex justify-end gap-4">
-                                        @if ($payment->remark == 'Pending')
-                                            <div class="flex justify-end gap-4" style="margin-right: 85px">
-                                                <button x-data="{ tooltip: 'View' }" alt="View" data-bs-toggle="modal"
-                                                data-bs-target="#viewPayment{{ $payment->id }}"
-                                                id="{{ $payment->id }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="16"
-                                                        width="18" viewBox="0 0 576 512" stroke-width="1.5"
-                                                        stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
-                                                    </svg>
-                                                    <div class="flex justify-center" style="margin-right:20%;">
-                                                        {{ __('VIEW') }}</div>
-                                                </a>
-                                                <button x-data="{ tooltip: 'Approve' }" alt="approve" data-bs-toggle="modal"
-                                                    data-bs-target="#approvePayment{{ $payment->id }}"
-                                                    id="{{ $payment->id }}">
-                                                    <svg style="color: #007FFF; margin-left: 17px"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="h-6 w-6" x-tooltip="tooltip">
-                                                        <path
-                                                            d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z" />
-                                                        <path
-                                                            d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0" />
-                                                    </svg>
-                                                    <div class="flex justify-center"
-                                                        style="margin-right:20%; color: #007FFF;">{{ __('APPROVE') }}
-                                                    </div>
-                                                </button>
-                                                <button x-data="{ tooltip: 'Delete' }" alt="DELETE" data-bs-toggle="modal"
-                                                    data-bs-target="#RejectPayment{{ $payment->id }}"
-                                                    id="{{ $payment->id }}">
-                                                    <svg style="color: red; margin-left: 5px"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="h-6 w-6" x-tooltip="tooltip">
-                                                        <path
-                                                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
-                                                        <path
-                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                                    </svg>
-                                                    <div class="flex justify-center"
-                                                        style="margin-right:50%; color: red;">{{ __('REJECT') }}
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        @elseif($payment->remark == 'Rejected')
+                                    <div class="flex justify-end gap-4">    
+                                        @if($payment->remark == 'Rejected')
                                             <div class="px-6 py-4 text-red-600 font-bold" style="margin-right: 120px">
                                                 {{ __('REJECTED') }}</div>
                                         @elseif($payment->remark == 'Approved')
@@ -126,6 +79,53 @@
                                         @elseif($payment->remark == 'Successful')
                                             <div class="px-6 py-4 text-green-600 font-bold" style="margin-right: 109px">
                                                 {{ __('SUCCESSFUL') }}</div>
+                                        @else
+                                        <div class="flex justify-end gap-4" style="margin-right: 85px">
+                                            <button x-data="{ tooltip: 'View' }" alt="View" data-bs-toggle="modal"
+                                            data-bs-target="#viewPayment{{ $payment->id }}"
+                                            id="{{ $payment->id }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="16"
+                                                    width="18" viewBox="0 0 576 512" stroke-width="1.5"
+                                                    stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+                                                </svg>
+                                                <div class="flex justify-center" style="margin-right:20%;">
+                                                    {{ __('VIEW') }}</div>
+                                            </a>
+                                            <button x-data="{ tooltip: 'Approve' }" alt="approve" data-bs-toggle="modal"
+                                                data-bs-target="#approvePayment{{ $payment->id }}"
+                                                id="{{ $payment->id }}">
+                                                <svg style="color: #007FFF; margin-left: 17px"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="h-6 w-6" x-tooltip="tooltip">
+                                                    <path
+                                                        d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z" />
+                                                    <path
+                                                        d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0" />
+                                                </svg>
+                                                <div class="flex justify-center"
+                                                    style="margin-right:20%; color: #007FFF;">{{ __('APPROVE') }}
+                                                </div>
+                                            </button>
+                                            <button x-data="{ tooltip: 'Delete' }" alt="DELETE" data-bs-toggle="modal"
+                                                data-bs-target="#RejectPayment{{ $payment->id }}"
+                                                id="{{ $payment->id }}">
+                                                <svg style="color: red; margin-left: 5px"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="h-6 w-6" x-tooltip="tooltip">
+                                                    <path
+                                                        d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                                                    <path
+                                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                                </svg>
+                                                <div class="flex justify-center"
+                                                    style="margin-right:50%; color: red;">{{ __('REJECT') }}
+                                                </div>
+                                            </button>
+                                        </div>      
                                         @endif
                                     </div>
                                 </td>

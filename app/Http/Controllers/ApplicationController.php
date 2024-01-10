@@ -168,6 +168,7 @@ class ApplicationController extends Controller
         return redirect()->route('dashboard')->with('Alert', 'Application Deleted!');
     }
 
+    //Admin
     public function approve(Request $request)
     {
         $ranID = rand(10000, 99999);

@@ -4,7 +4,7 @@
     <h1 class="text-4xl">MANAGE APPLICATION</h1>
     <h4 class="text-2xl">Admin Page</h4>
     <br />
-        <div class="container-fluid d-flex justify-content-evenly" style="padding-top:10%;">
+        <div class="container-fluid d-flex justify-content-evenly" style="padding-top:20px;">
             <div
                 class="w-full max-w-sm h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 space-y-4">
                 <div class="flex justify-end px-10 pt-4 ">

@@ -8,17 +8,24 @@
             style="background-color: #f0f0f0; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
             <br>
             <div class="container text-center">
+                @if (Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <!-- Complaint Form -->
                 <div class="container"
                     style="background-color: #e6e7e8; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                     <br>
                     <div class="row">
-                        <form>
+                        <form method="POST" action="{{ route('complaints.store') }}">
+                            @csrf
                             <div class="mb-3 row">
                                 <label for="complaintName" class="form-label col-sm-3">Complaint's Name:</label>
                                 <div class="col-sm-9">
                                     <input type="name" class="form-control" id="complaintName" aria-describedby=""
                                         placeholder="Write Your Name" name="name" value="{{ Auth::user()->name }}">
+                                    <input type="hidden" value="{{ Auth::user()->User_ID }}" name="userID">
                                     <div id="" class="form-text"></div>
                                 </div>
                             </div>
@@ -74,12 +81,13 @@
                                 <label for="complaintDetails" class="form-label col-sm-3">Complaint Details:</label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" id="complaintDetails" rows="4" aria-describedby=""
-                                        placeholder="Describe your complaint details"></textarea>
+                                        placeholder="Describe your complaint details" name="complaintDetails"></textarea>
                                     <div id="complaintDetailsHelp" class="form-text"></div>
                                 </div>
                             </div>
 
-                            <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit" name="confirm" value="Submit">
+                            <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                type="submit" name="confirm" value="Submit">
 
                             @push('scripts')
                                 <script>

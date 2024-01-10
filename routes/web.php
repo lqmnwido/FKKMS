@@ -48,6 +48,9 @@ Route::resource('complaints',App\Http\Controllers\ComplaintController::class);
 //Report resource
 Route::resource('reports',App\Http\Controllers\ReportController::class);
 
+//Report resource
+Route::resource('complaints',App\Http\Controllers\ComplaintController::class);
+
 //Application Route
 Route::post('/applications/approve','App\Http\Controllers\ApplicationController@approve') -> name('approve_application');
 
@@ -71,4 +74,12 @@ Route::get('toyyibpay/{billName}/{description}/{amount}/{refNo}/{name}/{email}/{
 Route::get('toyyibpay-status','App\Http\Controllers\PaymentController@paymentStatus') -> name('toyyibpay-status');
 Route::post('toyyibpay-callback','App\Http\Controllers\PaymentController@callBack') -> name('toyyibpay-callback');
 
+//Report Route
+Route::get('/reports/view/id={id}','App\Http\Controllers\ReportController@show') -> name('view_report');
 
+Route::get('reports/{report}/edit', 'App\Http\Controllers\ReportController@edit')->name('reports.edit');
+
+//Complaint Route
+Route::get('reports/Add_Note/{id}', 'App\Http\Controllers\ComplaintController@addNote')->name('complaint_addNote');
+
+Route::patch('reports/Update_Note/{id}', 'App\Http\Controllers\ComplaintController@updateNote')->name('complaint_updateNote');

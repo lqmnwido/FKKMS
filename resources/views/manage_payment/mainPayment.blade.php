@@ -17,7 +17,7 @@
                 {{ Session::get('success') }}
             </div>
         @endif
-        <div class="container-fluid d-flex justify-content-evenly" style="padding-top:10%;">
+        <div class="container-fluid d-flex justify-content-evenly" style="padding-top:20px;">
 
             @if ($payment !== null || $application->status != 'Approved')
                 <a href="{{ route('payments.create') }}"

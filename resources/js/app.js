@@ -195,9 +195,10 @@ function updateTotal() {
     var price = parseFloat(document.getElementById('price').value) || 0;
     var taxRate = parseFloat(document.getElementById('tRate').value) || 0;
 
+    var tax = (price * qty * taxRate);
     var total = (price * qty) + (price * qty * taxRate);
     document.getElementById('total').value = total.toFixed(2);
-    document.getElementById('totalHidden').value = total.toFixed(2);
+    document.getElementById('totalHidden').value = tax.toFixed(2);
 }
 
 // Event listener for quantity input change

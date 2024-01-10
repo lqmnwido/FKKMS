@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Complaint;
 
 class ComplaintController extends Controller
 {
@@ -19,7 +20,12 @@ class ComplaintController extends Controller
 
         if ($role == 'FK Student' || $role == 'Vendor') {
             return view('manage_complaint.AddComplaint', compact('users'));
+        }elseif($role == 'Pupuk Admin'){
+            return view('manage_complaint.ViewComplaintList', compact('users'));
+        }elseif($role == 'FK Technical'){
+            return view('manage_complaint.ViewComplaintList', compact('users'));
         }
+
     }
 
     /**
@@ -35,7 +41,30 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ranID = rand(10000, 99999);
+        $complaintID = 'COM' . $ranID;
+
+        $dateAndTime = $request['Date_Time'];
+    
+        
+
+        $dateTimeObject = \DateTime::createFromFormat('Y-m-d\TH:i', $dateAndTime);
+
+        $date = $dateTimeObject->format('Y-m-d');
+        $time = $dateTimeObject->format('H:i:s');
+
+        Complaint::create([
+            'complaint_ID' => $complaintID,
+            'User_ID' => $request['userID'],
+            'Date' => $date,
+            'Time' => $time,
+            'complaintCategory_ID' => $request['complaintCategory'],
+            'complaintStatus_ID' => 0,
+            'details' => $request['complaintDetails'],
+        ]);
+
+        return redirect()->route('complaints.index')->with('success', 'Complaint Submitted!');
+
     }
 
     /**
@@ -59,7 +88,11 @@ class ComplaintController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Complaint::where('id', $id)->update([
+            'complaintStatus_ID' => $request['status'],
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Complaint Status Updated!');
     }
 
     /**
@@ -67,6 +100,29 @@ class ComplaintController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $complaint = Complaint::findOrFail($id);
+        $complaint->delete();
+        return redirect()->route('dashboard')->with('Alert', 'Complaint Deleted!');
+    }
+
+    public function addNote()
+    {
+        $id = request('id');
+
+        $complaint = Complaint::where('id', $id)->first();
+        $uid = $complaint->User_ID;
+
+        $user = User::where('User_ID', $uid)->first();
+
+        return view('manage_complaint.AddNote', compact('id', 'complaint', 'user'));
+    }
+
+    public function updateNote(Request $request, string $id)
+    {
+        Complaint::where('id', $id)->update([
+            'addNote' => $request['note'],
+        ]);
+
+        return redirect()->route('dashboard')->with('Success', 'Note Saved!');
     }
 }
